@@ -15,7 +15,11 @@ class SeekingAlpha_Spider(scrapy.Spider):
         '''
 
         for news in response.xpath('//li[@class="mc"]'):
-            yield {
+            # yield {
+            #     'symbol': news.xpath('div[@class="media-left"]').css('a::text').extract_first(),
+            #     'title': news.xpath('div[@class="media-body"]').xpath('div[@class="title"]').css('a::text').extract_first()
+            # }
+            return {
                 'symbol': news.xpath('div[@class="media-left"]').css('a::text').extract_first(),
                 'title': news.xpath('div[@class="media-body"]').xpath('div[@class="title"]').css('a::text').extract_first()
             }
